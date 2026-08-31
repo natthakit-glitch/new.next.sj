@@ -1,6 +1,4 @@
-import CourseCard from "@/components/CourseCard";
 import { Course } from "@/types/course";
-import { courses } from "@/data/coursedata";
 
   export const courses: Course[] = [
     {
