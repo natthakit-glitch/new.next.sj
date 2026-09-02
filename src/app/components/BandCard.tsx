@@ -22,7 +22,7 @@ export default function BandCard({ band }: BandCardProps) {
         <p className="band-meta">
           {band.genre} · ก่อตั้งปี {band.formedYear}
         </p>
-
+         <p className="band-bio">{band.bio}</p> 
         <ul className="band-members">
           {band.members.map((member) => (
             <li key={member.name}>

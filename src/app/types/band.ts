@@ -9,5 +9,6 @@ export type Band = {
   genre: string;
   formedYear: number;
   imageUrl: string;
-  members: Member[];   // array ของ Member 
+  bio: string;  
+  members: Member[];   
 };
