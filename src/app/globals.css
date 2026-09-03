@@ -1,0 +1,223 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #1e2a38;
+  --ink-soft: #4a5568;
+  --paper: #f1f3ec;
+  --paper-raised: #ffffff;
+  --line: #d9ddd1;
+  --gold: #b8863b;
+  --status-open: #2f6f4e;
+  --status-open-bg: #e3efe6;
+  --status-closed: #9b3b3b;
+  --status-closed-bg: #f4e6e4;
+}
+
+@theme inline {
+  --color-background: var(--paper);
+  --color-foreground: var(--ink);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+h1, h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0 0 12px;
+}
+
+a {
+  color: inherit;
+}
+
+/* ---- Navbar  ---- */
+nav {
+  background: var(--ink);
+  border-bottom: 3px solid var(--gold);
+  padding: 18px 24px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+  max-width: 920px;
+  margin-inline: auto;
+}
+
+nav a {
+  color: #cfd6dd;
+  text-decoration: none;
+  font-size: 0.95rem;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+nav a:hover {
+  color: #ffffff;
+  border-bottom-color: var(--gold);
+}
+
+/* ---- โครงหน้า (main ทุกหน้า) ---- */
+main {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 56px 24px 64px;
+}
+
+main p {
+  color: var(--ink-soft);
+  line-height: 1.7;
+  font-size: 1.02rem;
+}
+
+/* ---- หน้าแรก: รายการหัวข้อ  ---- */
+main > ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 24px 0 0;
+  padding: 0;
+}
+
+main > ul > li {
+  border: 1px solid var(--line);
+  background: var(--paper-raised);
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+/* ---- หน้ารายวิชา ---- */
+.courseGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+  margin-top: 32px;
+}
+
+.course-card {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.course-card h2 {
+  font-size: 1.15rem;
+  margin-bottom: 4px;
+}
+
+.course-card p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+/* ---- Bands page ---- */
+.band-grid {
+  margin-top: 24px;
+}
+
+.band-card {
+  display: flex;
+  gap: 20px;
+  padding: 24px 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.band-card:first-child {
+  padding-top: 0;
+}
+
+.band-card-image {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  flex-shrink: 0;
+  background: #eeeeee;
+}
+
+.band-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.band-card-body {
+  flex: 1;
+}
+
+.band-card-body h2 {
+  font-size: 1.3rem;
+  margin: 0 0 4px;
+  color: #222;
+}
+
+.band-meta {
+  font-size: 0.9rem;
+  color: #888;
+  margin: 0 0 12px;
+}
+
+.band-members {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.band-members li {
+  display: flex;
+  gap: 8px;
+  padding: 3px 0;
+  font-size: 0.9rem;
+}
+
+.member-name {
+  color: #333;
+}
+
+.member-role {
+  color: #888;
+}
+
+.member-role::before {
+  content: "– ";
+}
+
+.band-members li {
+  align-items: center;
+}
+
+.member-photo {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;    
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #ddd;
+}
+
+.member-photo img {
+  object-fit: cover;
+}
