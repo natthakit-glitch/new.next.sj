@@ -1,4 +1,5 @@
 import { Course } from "@/types/course";
+use client";
 
   export const courses: Course[] = [
     {
