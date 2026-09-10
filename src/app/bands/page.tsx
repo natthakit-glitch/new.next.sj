@@ -1,5 +1,10 @@
-import BandCard from "../components/BandCard";
+import type { Metadata } from "next";
+import BandExplorer from "@/components/BandExplorer";
 import { bands } from "@/data/banddata";
+
+export const metadata: Metadata = {
+  title: "วงดนตรีที่ชื่นชอบ",
+};
 
 export default function BandsPage() {
   return (
@@ -7,11 +12,7 @@ export default function BandsPage() {
       <div className="page-header">
         <h1>วงดนตรีที่ชื่นชอบ</h1>
       </div>
-      <div className="band-grid">
-        {bands.map((band) => (
-          <BandCard key={band.id} band={band} />
-        ))}
-      </div>
+      <BandExplorer bands={bands} />
     </main>
   );
 }
