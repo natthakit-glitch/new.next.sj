@@ -49,14 +49,15 @@ export default function BandCard({
         <div className="band-actions">
           <button
             type="button"
+            className="follow-btn"
             aria-pressed={isFollowing}
             onClick={() => onToggleFollow(band.id)}
           >
             {isFollowing ? "กำลังติดตาม" : "ติดตาม"}
           </button>
 
-          <button type="button" onClick={() => onLike(band.id)}>
-             Like ({likeCount})
+          <button type="button" className="like-btn" onClick={() => onLike(band.id)}>
+            ♥ Like {likeCount}
           </button>
         </div>
       </div>
