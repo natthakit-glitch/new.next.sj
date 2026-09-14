@@ -132,6 +132,8 @@ main > ul > li {
   margin: 0;
   font-size: 0.9rem;
 }
+
+
 /* ---- Bands page ---- */
 .toolbar {
   display: flex;
@@ -212,6 +214,53 @@ main > ul > li {
   font-size: 0.9rem;
   color: #888;
   margin: 0 0 8px;
+<<<<<<< HEAD
+=======
+}
+
+.band-bio {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  margin: 0 0 14px;
+}
+
+.band-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.band-actions button {
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 0.88rem;
+  cursor: pointer;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.band-actions button:hover {
+  border-color: var(--gold);
+}
+
+.follow-btn[aria-pressed="true"] {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #ffffff;
+}
+
+.like-btn {
+  color: #b3395b;
+  border-color: #ecc9d3;
+  background: #fbeef1;
+}
+
+.like-btn:hover {
+  border-color: #b3395b;
+>>>>>>> a8aa5a816d22c05343ec5bffc9047d3385d546d1
 }
 
 .band-bio {
@@ -261,43 +310,39 @@ main > ul > li {
 
 .band-members {
   list-style: none;
-  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  margin: 0 0 4px;
   padding: 0;
 }
 
 .band-members li {
   display: flex;
-  gap: 8px;
-  padding: 3px 0;
-  font-size: 0.9rem;
-}
-
-.member-name {
-  color: #333;
-}
-
-.member-role {
-  color: #888;
-}
-
-.member-role::before {
-  content: "– ";
-}
-
-.band-members li {
   align-items: center;
+  gap: 8px;
 }
 
 .member-photo {
   position: relative;
   width: 56px;
   height: 56px;
-  border-radius: 50%;    
+  border-radius: 50%;
   overflow: hidden;
   flex-shrink: 0;
-  background: #ddd;
 }
 
 .member-photo img {
   object-fit: cover;
-} 
+}
+
+.member-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.member-role {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+}

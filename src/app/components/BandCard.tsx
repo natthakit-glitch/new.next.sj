@@ -57,7 +57,7 @@ export default function BandCard({
           </button>
 
           <button type="button" className="like-btn" onClick={() => onLike(band.id)}>
-            ♥ Like ({likeCount})
+            ♥ Like {likeCount}
           </button>
         </div>
       </div>

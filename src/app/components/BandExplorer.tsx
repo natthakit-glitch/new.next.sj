@@ -14,7 +14,7 @@ export default function BandExplorer({ bands }: BandExplorerProps) {
   const [followingIds, setFollowingIds] = useState<number[]>([]);
   const [likes, setLikes] = useState<Record<number, number>>({});
 
-  // ฟังก์ชัน handle ทั้งหมด
+
   function handleKeywordChange(event: ChangeEvent<HTMLInputElement>) {
     setKeyword(event.target.value);
   }
@@ -34,11 +34,14 @@ export default function BandExplorer({ bands }: BandExplorerProps) {
     }));
   }
 
-  
   const searchText = keyword.trim().toLowerCase();
 
   const visibleBands = bands.filter((band) =>
     band.name.toLowerCase().includes(searchText)
+   
+
+
+  
   );
 
   return (
