@@ -8,6 +8,7 @@ import { Course } from "@/types/course";
       title: "Web Technology",
       credits: 3,
       isOpen: true,
+      instructor: "อาจารย์ผู้สอนรายวิชา",
     },
     {
       id: 2,
@@ -15,6 +16,7 @@ import { Course } from "@/types/course";
       title: "Database Systems",
       credits: 3,
       isOpen: false,
+      instructor: "อาจารย์ผู้สอนรายวิชา",
     },
     {
       id: 3,
@@ -22,6 +24,7 @@ import { Course } from "@/types/course";
       title: "Software Engineering",
       credits: 3,
       isOpen: true,
+      instructor: "อาจารย์ผู้สอนรายวิชา",
     },
     {
       id: 4,
@@ -29,5 +32,6 @@ import { Course } from "@/types/course";
       title: "Computer Networks",
       credits: 3,
       isOpen: true,
+      instructor: "อาจารย์ผู้สอนรายวิชา",
     },
   ];
