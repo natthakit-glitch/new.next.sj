@@ -43,7 +43,9 @@ a {
   color: inherit;
 }
 
-/* ---- Navbar ---- */
+/* ==================================================
+   NAVBAR
+   ================================================== */
 
 nav {
   background: var(--ink);
@@ -77,7 +79,9 @@ nav a:hover {
   border-bottom-color: var(--gold);
 }
 
-/* ---- โครงหน้า (main ทุกหน้า) ---- */
+/* ==================================================
+   โครงหน้า
+   ================================================== */
 
 main {
   max-width: 920px;
@@ -91,7 +95,9 @@ main p {
   font-size: 1.02rem;
 }
 
-/* ---- หน้าแรก: รายการหัวข้อ ---- */
+/* ==================================================
+   หน้าแรก
+   ================================================== */
 
 main > ul {
   list-style: none;
@@ -112,20 +118,14 @@ main > ul > li {
 }
 
 /* ==================================================
-   หน้ารายวิชา
+   COURSE PAGE
    ================================================== */
-
-/* กล่องหลักของหน้ารายวิชา */
 
 .course-explorer {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
-
-/* กล่องค้นหาเฉพาะหน้ารายวิชา
-   ใช้ .course-search แทน .toolbar
-   เพื่อไม่กระทบหน้า Bands */
 
 .course-search {
   background: var(--paper-raised);
@@ -158,7 +158,7 @@ main > ul > li {
   background: #ffffff;
 }
 
-/* ---- ฟอร์มรายวิชา ---- */
+/* Course Form */
 
 .course-form {
   background: var(--paper-raised);
@@ -229,7 +229,7 @@ main > ul > li {
   line-height: 1.4;
 }
 
-/* ปุ่มของฟอร์ม */
+/* Course Buttons */
 
 .form-actions {
   display: flex;
@@ -266,7 +266,7 @@ main > ul > li {
   border-color: var(--gold);
 }
 
-/* ---- การ์ดรายวิชา ---- */
+/* Course Cards */
 
 .courseGrid {
   display: grid;
@@ -322,8 +322,6 @@ main > ul > li {
   font-size: 0.85rem;
 }
 
-/* ข้อมูลใน Card */
-
 .course-info {
   padding: 10px 0;
   border-top: 1px solid #e5e7e2;
@@ -333,8 +331,6 @@ main > ul > li {
 .course-info p {
   margin: 4px 0;
 }
-
-/* ปุ่มแก้ไข / ลบ */
 
 .course-actions {
   display: flex;
@@ -370,8 +366,6 @@ main > ul > li {
   border-color: var(--status-closed) !important;
 }
 
-/* ไม่พบรายวิชา */
-
 .empty-state {
   background: var(--paper-raised);
   border: 1px solid var(--line);
@@ -385,7 +379,7 @@ main > ul > li {
 }
 
 /* ==================================================
-   Bands page
+   BANDS PAGE
    ไม่แก้ไขส่วนนี้
    ================================================== */
 
@@ -557,7 +551,7 @@ main > ul > li {
 }
 
 /* ==================================================
-   Responsive
+   RESPONSIVE
    ================================================== */
 
 @media (max-width: 700px) {
@@ -590,10 +584,10 @@ main > ul > li {
   .form-actions button {
     width: 100%;
   }
+}
 
-
-  /* ==================================================
-   Game Backlog
+/* ==================================================
+   GAME BACKLOG
    ================================================== */
 
 .game-explorer {
@@ -602,67 +596,111 @@ main > ul > li {
   gap: 20px;
 }
 
+/* Game Header */
+
+.game-page-header {
+  padding: 32px;
+  margin-bottom: 28px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #073b2a, #00743d);
+  color: white;
+  box-shadow: 0 12px 30px rgba(0, 116, 61, 0.18);
+}
+
+.game-page-label {
+  display: inline-block;
+  margin-bottom: 8px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.14);
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.game-page-header h1 {
+  margin: 0 0 8px;
+  color: white;
+  font-size: 2.5rem;
+  letter-spacing: -0.5px;
+}
+
+.game-page-header p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.8);
+}
+
 /* Search */
 
 .game-search {
+  padding: 20px;
+  margin-bottom: 22px;
   background: var(--paper-raised);
   border: 1px solid var(--line);
-  border-radius: 6px;
-  padding: 16px 18px;
+  border-radius: 14px;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.04);
 }
 
 .game-search label {
   display: block;
-  margin-bottom: 7px;
+  margin-bottom: 8px;
   color: var(--ink);
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 700;
 }
 
 .game-search input {
   width: 100%;
-  padding: 10px 12px;
+  box-sizing: border-box;
+  padding: 13px 16px;
   border: 1px solid var(--line);
-  border-radius: 4px;
+  border-radius: 10px;
   background: var(--paper);
   color: var(--ink);
-  font-size: 0.95rem;
+  font-size: 15px;
+  transition: 0.2s ease;
 }
 
 .game-search input:focus {
   outline: none;
-  border-color: var(--gold);
-  background: #ffffff;
+  border-color: #00743d;
+  box-shadow: 0 0 0 3px rgba(0, 116, 61, 0.1);
 }
 
 /* Form */
 
 .game-form {
+  padding: 26px;
+  margin-bottom: 28px;
   background: var(--paper-raised);
   border: 1px solid var(--line);
-  border-radius: 6px;
-  padding: 22px;
+  border-radius: 14px;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.04);
 }
 
 .game-form-header {
+  padding-bottom: 16px;
   margin-bottom: 20px;
+  border-bottom: 1px solid var(--line);
 }
 
 .game-form-header h2 {
   margin: 0 0 5px;
-  font-size: 1.25rem;
+  color: var(--ink);
+  font-size: 1.35rem;
 }
 
 .game-form-header p {
   margin: 0;
   color: var(--ink-soft);
-  font-size: 0.9rem;
+  font-size: 14px;
 }
 
 .game-form-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
+  gap: 18px;
 }
 
 .game-form-group {
@@ -671,28 +709,32 @@ main > ul > li {
 }
 
 .game-form-group label {
-  margin-bottom: 6px;
-  font-size: 0.9rem;
-  font-weight: 600;
+  margin-bottom: 7px;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 700;
 }
 
 .game-form-group input,
 .game-form-group select {
   width: 100%;
-  min-height: 40px;
-  padding: 8px 11px;
+  box-sizing: border-box;
+  min-height: 44px;
+  padding: 10px 13px;
   border: 1px solid var(--line);
-  border-radius: 4px;
+  border-radius: 9px;
   background: var(--paper);
   color: var(--ink);
-  font-size: 0.95rem;
+  font-size: 15px;
+  transition: 0.2s ease;
 }
 
 .game-form-group input:focus,
 .game-form-group select:focus {
   outline: none;
-  border-color: var(--gold);
+  border-color: #00743d;
   background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(0, 116, 61, 0.08);
 }
 
 .game-form-group input[aria-invalid="true"],
@@ -701,34 +743,38 @@ main > ul > li {
 }
 
 .game-form-error {
-  margin: 5px 0 0;
+  margin: 6px 0 0;
   color: var(--status-closed);
-  font-size: 0.82rem;
+  font-size: 13px;
 }
+
+/* Form Buttons */
 
 .game-form-actions {
   display: flex;
   gap: 10px;
-  margin-top: 20px;
+  margin-top: 22px;
 }
 
 .game-form-actions button {
-  min-height: 40px;
-  padding: 8px 18px;
-  border-radius: 4px;
+  min-height: 42px;
+  padding: 10px 22px;
+  border-radius: 9px;
   cursor: pointer;
-  font-size: 0.9rem;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 700;
+  transition: 0.2s ease;
 }
 
 .game-save-button {
-  border: 1px solid var(--ink);
-  background: var(--ink);
-  color: #ffffff;
+  border: 1px solid #00743d;
+  background: #00743d;
+  color: white;
 }
 
 .game-save-button:hover {
-  background: #2c3b4d;
+  background: #005f32;
+  transform: translateY(-1px);
 }
 
 .game-cancel-button {
@@ -738,74 +784,149 @@ main > ul > li {
 }
 
 .game-cancel-button:hover {
-  border-color: var(--gold);
+  border-color: #00743d;
 }
 
-/* Game Cards */
+/* Game Grid */
 
 .game-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
+  gap: 20px;
 }
 
+/* Game Card */
+
 .game-card {
+  position: relative;
+  overflow: hidden;
+  padding: 24px;
   background: var(--paper-raised);
   border: 1px solid var(--line);
-  border-radius: 6px;
-  padding: 20px 22px;
+  border-radius: 16px;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.04);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
 }
+
+.game-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: #00743d;
+}
+
+.game-card:hover {
+  transform: translateY(-5px);
+  border-color: #00743d;
+  box-shadow: 0 14px 30px rgba(0, 116, 61, 0.12);
+}
+
+/* Card Header */
 
 .game-card-header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   gap: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 18px;
 }
 
 .game-platform {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--ink-soft);
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 7px;
+  background: rgba(0, 116, 61, 0.09);
+  color: #00743d;
+  font-size: 12px;
+  font-weight: 700;
 }
 
 .game-hours {
-  font-size: 0.85rem;
   color: var(--ink-soft);
+  font-size: 13px;
+  font-weight: 600;
 }
 
+/* Game Name */
+
 .game-card h2 {
-  margin: 0 0 10px;
-  font-size: 1.15rem;
+  min-height: 54px;
+  margin: 0 0 18px;
+  color: var(--ink);
+  font-size: 1.2rem;
+  line-height: 1.45;
 }
 
 .game-card h2 a {
   color: var(--ink);
   text-decoration: none;
+  transition: 0.2s ease;
 }
 
 .game-card h2 a:hover {
-  color: var(--gold);
+  color: #00743d;
 }
 
-.game-card p {
-  margin: 0;
-  font-size: 0.9rem;
+/* Status */
+
+.game-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
 }
+
+.game-status span {
+  color: var(--ink-soft);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.game-status-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.status-not-started {
+  background: #eeeeee;
+  color: #555555;
+}
+
+.status-playing {
+  background: #fff0c7;
+  color: #896400;
+}
+
+.status-completed {
+  background: #dff3e5;
+  color: #26733b;
+}
+
+/* Card Buttons */
 
 .game-card-actions {
   display: flex;
-  gap: 8px;
-  margin-top: 16px;
+  gap: 9px;
+  margin-top: 18px;
 }
 
 .game-card-actions button {
-  padding: 7px 14px;
-  border-radius: 4px;
+  padding: 8px 16px;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-size: 13px;
+  font-weight: 700;
+  transition: 0.2s ease;
 }
 
 .game-edit-button {
@@ -815,7 +936,8 @@ main > ul > li {
 }
 
 .game-edit-button:hover {
-  border-color: var(--gold);
+  border-color: #00743d;
+  color: #00743d;
 }
 
 .game-delete-button {
@@ -828,21 +950,91 @@ main > ul > li {
   border-color: var(--status-closed);
 }
 
+/* Empty */
+
 .game-empty {
+  padding: 50px 30px;
+  border: 1px dashed var(--line);
+  border-radius: 14px;
   background: var(--paper-raised);
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  padding: 30px 20px;
   text-align: center;
 }
 
 .game-empty p {
   margin: 0;
+  color: var(--ink-soft);
 }
 
-/* Mobile */
+/* ==================================================
+   GAME DETAIL
+   ================================================== */
+
+.game-detail {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 34px;
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+}
+
+.game-back-link {
+  display: inline-block;
+  margin-bottom: 24px;
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.game-back-link:hover {
+  color: #00743d;
+}
+
+.game-detail h1 {
+  margin: 8px 0 30px;
+  color: var(--ink);
+  font-size: 2.2rem;
+}
+
+.game-detail-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.game-detail-info div {
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--paper);
+}
+
+.game-detail-info span {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--ink-soft);
+  font-size: 13px;
+}
+
+.game-detail-info strong {
+  font-size: 15px;
+}
+
+/* ==================================================
+   GAME RESPONSIVE
+   ================================================== */
 
 @media (max-width: 700px) {
+  .game-page-header {
+    padding: 24px;
+  }
+
+  .game-page-header h1 {
+    font-size: 2rem;
+  }
+
   .game-form-grid {
     grid-template-columns: 1fr;
   }
@@ -850,15 +1042,28 @@ main > ul > li {
   .game-grid {
     grid-template-columns: 1fr;
   }
+
+  .game-detail-info {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 480px) {
+  .game-page-header {
+    padding: 20px;
+    border-radius: 14px;
+  }
+
+  .game-page-header h1 {
+    font-size: 1.8rem;
+  }
+
   .game-form {
     padding: 18px;
   }
 
   .game-card {
-    padding: 18px;
+    padding: 20px;
   }
 
   .game-form-actions {
@@ -868,5 +1073,4 @@ main > ul > li {
   .game-form-actions button {
     width: 100%;
   }
-}
 }
