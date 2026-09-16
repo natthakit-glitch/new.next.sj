@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Course } from "@/types/course";
 
 type CourseCardProps = {
@@ -6,10 +7,17 @@ type CourseCardProps = {
   onDelete: () => void;
 };
 
-export default function CourseCard({ course, onEdit, onDelete }: CourseCardProps) {
+export default function CourseCard({
+  course,
+  onEdit,
+  onDelete,
+}: CourseCardProps) {
   return (
     <article className="course-card">
-      <h2>{course.name}</h2>
+      <h2>
+        <Link href={`/courses/${course.id}`}>{course.name}</Link>
+      </h2>
+
       <p>รหัสวิชา: {course.code}</p>
       <p>{course.credit} หน่วยกิต</p>
       <p>ผู้สอน: {course.instructor}</p>
@@ -17,6 +25,7 @@ export default function CourseCard({ course, onEdit, onDelete }: CourseCardProps
       <button type="button" onClick={onEdit}>
         แก้ไข
       </button>
+
       <button type="button" onClick={onDelete}>
         ลบ
       </button>

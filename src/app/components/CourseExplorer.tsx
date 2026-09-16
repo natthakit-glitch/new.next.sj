@@ -9,15 +9,19 @@ type CourseExplorerProps = {
   initialCourses: Course[];
 };
 
-export default function CourseExplorer({ initialCourses }: CourseExplorerProps) {
+export default function CourseExplorer({
+  initialCourses,
+}: CourseExplorerProps) {
   const [courses, setCourses] = useState<Course[]>(initialCourses);
   const [keyword, setKeyword] = useState("");
   const [editingId, setEditingId] = useState<string | null>(null);
 
+  // ค้นหารายวิชา
   function handleKeywordChange(event: ChangeEvent<HTMLInputElement>) {
     setKeyword(event.target.value);
   }
 
+  // เพิ่มรายวิชา
   function handleCreate(draft: CourseDraft) {
     const newCourse: Course = {
       id: crypto.randomUUID(),
@@ -27,16 +31,22 @@ export default function CourseExplorer({ initialCourses }: CourseExplorerProps) 
       instructor: draft.instructor.trim(),
     };
 
-    setCourses([...courses, newCourse]);
+    setCourses((prev) => [...prev, newCourse]);
   }
 
+  // ลบรายวิชา
   function handleDelete(id: string) {
-    setCourses(courses.filter((course) => course.id !== id));
+    setCourses((prev) => prev.filter((course) => course.id !== id));
+
+    if (editingId === id) {
+      setEditingId(null);
+    }
   }
 
+  // แก้ไขรายวิชา
   function handleUpdate(id: string, draft: CourseDraft) {
-    setCourses(
-      courses.map((course) =>
+    setCourses((prev) =>
+      prev.map((course) =>
         course.id === id
           ? {
               ...course,
@@ -45,44 +55,56 @@ export default function CourseExplorer({ initialCourses }: CourseExplorerProps) 
               credit: Number(draft.credit),
               instructor: draft.instructor.trim(),
             }
-          : course
-      )
+          : course,
+      ),
     );
 
     setEditingId(null);
   }
 
+  // บันทึกข้อมูล
   function handleSave(draft: CourseDraft) {
     if (editingId === null) {
       handleCreate(draft);
-      return;
+    } else {
+      handleUpdate(editingId, draft);
     }
-
-    handleUpdate(editingId, draft);
   }
 
-  const editingCourse = courses.find((course) => course.id === editingId);
+  // หารายวิชาที่กำลังแก้ไข
+  const editingCourse = courses.find(
+    (course) => course.id === editingId,
+  );
 
+  // คำค้นหา
   const searchText = keyword.trim().toLowerCase();
 
+  // กรองรายวิชา
   const visibleCourses = courses.filter(
     (course) =>
       course.name.toLowerCase().includes(searchText) ||
-      course.code.toLowerCase().includes(searchText)
+      course.code.toLowerCase().includes(searchText) ||
+      course.instructor.toLowerCase().includes(searchText),
   );
 
   return (
-    <div>
-      <div className="toolbar">
+    <div className="course-explorer">
+      {/* ค้นหารายวิชา */}
+      <div className="course-search">
+        <label htmlFor="course-search">
+          ค้นหารายวิชา
+        </label>
+
         <input
+          id="course-search"
           type="search"
-          aria-label="ค้นหารายวิชา"
           value={keyword}
           onChange={handleKeywordChange}
           placeholder="ค้นหาชื่อวิชาหรือรหัสวิชา"
         />
       </div>
 
+      {/* แบบฟอร์มเพิ่ม / แก้ไขรายวิชา */}
       <CourseForm
         key={editingId ?? "new"}
         initialCourse={editingCourse}
@@ -90,8 +112,11 @@ export default function CourseExplorer({ initialCourses }: CourseExplorerProps) 
         onCancel={() => setEditingId(null)}
       />
 
+      {/* รายการรายวิชา */}
       {visibleCourses.length === 0 ? (
-        <p>ไม่พบรายวิชาที่ตรงกับเงื่อนไข</p>
+        <div className="empty-state">
+          <p>ไม่พบรายวิชาที่ตรงกับเงื่อนไข</p>
+        </div>
       ) : (
         <section className="courseGrid">
           {visibleCourses.map((course) => (

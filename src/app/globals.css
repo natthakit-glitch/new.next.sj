@@ -31,7 +31,8 @@ body {
   margin: 0;
 }
 
-h1, h2 {
+h1,
+h2 {
   font-family: Georgia, "Times New Roman", serif;
   font-weight: 600;
   letter-spacing: -0.01em;
@@ -42,7 +43,8 @@ a {
   color: inherit;
 }
 
-/* ---- Navbar  ---- */
+/* ---- Navbar ---- */
+
 nav {
   background: var(--ink);
   border-bottom: 3px solid var(--gold);
@@ -65,7 +67,9 @@ nav a {
   font-size: 0.95rem;
   padding-bottom: 4px;
   border-bottom: 2px solid transparent;
-  transition: color 0.15s ease, border-color 0.15s ease;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease;
 }
 
 nav a:hover {
@@ -74,6 +78,7 @@ nav a:hover {
 }
 
 /* ---- โครงหน้า (main ทุกหน้า) ---- */
+
 main {
   max-width: 920px;
   margin: 0 auto;
@@ -86,7 +91,8 @@ main p {
   font-size: 1.02rem;
 }
 
-/* ---- หน้าแรก: รายการหัวข้อ  ---- */
+/* ---- หน้าแรก: รายการหัวข้อ ---- */
+
 main > ul {
   list-style: none;
   display: flex;
@@ -105,12 +111,168 @@ main > ul > li {
   color: var(--ink-soft);
 }
 
-/* ---- หน้ารายวิชา ---- */
+/* ==================================================
+   หน้ารายวิชา
+   ================================================== */
+
+/* กล่องหลักของหน้ารายวิชา */
+
+.course-explorer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* กล่องค้นหาเฉพาะหน้ารายวิชา
+   ใช้ .course-search แทน .toolbar
+   เพื่อไม่กระทบหน้า Bands */
+
+.course-search {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 16px 18px;
+}
+
+.course-search label {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--ink);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.course-search input[type="search"] {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 0.95rem;
+}
+
+.course-search input[type="search"]:focus {
+  outline: none;
+  border-color: var(--gold);
+  background: #ffffff;
+}
+
+/* ---- ฟอร์มรายวิชา ---- */
+
+.course-form {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 22px;
+}
+
+.form-header {
+  margin-bottom: 20px;
+}
+
+.form-header h2 {
+  color: var(--ink);
+  font-size: 1.25rem;
+  margin: 0 0 5px;
+}
+
+.form-header p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 6px;
+  color: var(--ink);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.form-group input {
+  width: 100%;
+  min-height: 40px;
+  padding: 8px 11px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 0.95rem;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--gold);
+  background: #ffffff;
+}
+
+.form-group input[aria-invalid="true"] {
+  border-color: var(--status-closed);
+}
+
+.form-error {
+  margin: 5px 0 0;
+  color: var(--status-closed);
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+/* ปุ่มของฟอร์ม */
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.form-actions button {
+  min-height: 40px;
+  padding: 8px 18px;
+  border-radius: 4px;
+  border: 1px solid var(--line);
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.save-button {
+  background: var(--ink);
+  color: #ffffff;
+  border-color: var(--ink) !important;
+}
+
+.save-button:hover {
+  background: #2c3b4d;
+}
+
+.cancel-button {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.cancel-button:hover {
+  border-color: var(--gold);
+}
+
+/* ---- การ์ดรายวิชา ---- */
+
 .courseGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 20px;
-  margin-top: 32px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 4px;
 }
 
 .course-card {
@@ -125,7 +287,16 @@ main > ul > li {
 
 .course-card h2 {
   font-size: 1.15rem;
-  margin-bottom: 4px;
+  margin: 0 0 6px;
+}
+
+.course-card h2 a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.course-card h2 a:hover {
+  color: var(--gold);
 }
 
 .course-card p {
@@ -133,8 +304,91 @@ main > ul > li {
   font-size: 0.9rem;
 }
 
+.course-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
 
-/* ---- Bands page ---- */
+.course-code {
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.course-credit {
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+}
+
+/* ข้อมูลใน Card */
+
+.course-info {
+  padding: 10px 0;
+  border-top: 1px solid #e5e7e2;
+  border-bottom: 1px solid #e5e7e2;
+}
+
+.course-info p {
+  margin: 4px 0;
+}
+
+/* ปุ่มแก้ไข / ลบ */
+
+.course-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.course-actions button {
+  padding: 7px 14px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  border: 1px solid var(--line);
+  font-weight: 600;
+}
+
+.edit-button {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.edit-button:hover {
+  border-color: var(--gold);
+}
+
+.delete-button {
+  background: var(--status-closed-bg);
+  color: var(--status-closed);
+  border-color: #e5c7c3 !important;
+}
+
+.delete-button:hover {
+  border-color: var(--status-closed) !important;
+}
+
+/* ไม่พบรายวิชา */
+
+.empty-state {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.empty-state p {
+  margin: 0;
+}
+
+/* ==================================================
+   Bands page
+   ไม่แก้ไขส่วนนี้
+   ================================================== */
+
 .toolbar {
   display: flex;
   align-items: center;
@@ -214,8 +468,6 @@ main > ul > li {
   font-size: 0.9rem;
   color: #888;
   margin: 0 0 8px;
-<<<<<<< HEAD
-=======
 }
 
 .band-bio {
@@ -239,52 +491,10 @@ main > ul > li {
   border: 1px solid var(--line);
   background: var(--paper);
   color: var(--ink);
-  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
-}
-
-.band-actions button:hover {
-  border-color: var(--gold);
-}
-
-.follow-btn[aria-pressed="true"] {
-  background: var(--gold);
-  border-color: var(--gold);
-  color: #ffffff;
-}
-
-.like-btn {
-  color: #b3395b;
-  border-color: #ecc9d3;
-  background: #fbeef1;
-}
-
-.like-btn:hover {
-  border-color: #b3395b;
->>>>>>> a8aa5a816d22c05343ec5bffc9047d3385d546d1
-}
-
-.band-bio {
-  font-size: 0.9rem;
-  color: var(--ink-soft);
-  line-height: 1.6;
-  margin: 0 0 14px;
-}
-
-.band-actions {
-  display: flex;
-  gap: 10px;
-  margin-top: 14px;
-}
-
-.band-actions button {
-  padding: 8px 16px;
-  border-radius: 4px;
-  font-size: 0.88rem;
-  cursor: pointer;
-  border: 1px solid var(--line);
-  background: var(--paper);
-  color: var(--ink);
-  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
 }
 
 .band-actions button:hover {
@@ -306,7 +516,6 @@ main > ul > li {
 .like-btn:hover {
   border-color: #b3395b;
 }
-
 
 .band-members {
   list-style: none;
@@ -345,4 +554,319 @@ main > ul > li {
 .member-role {
   font-size: 0.8rem;
   color: var(--ink-soft);
+}
+
+/* ==================================================
+   Responsive
+   ================================================== */
+
+@media (max-width: 700px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .courseGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    padding: 36px 16px 48px;
+  }
+
+  .course-form {
+    padding: 18px;
+  }
+
+  .course-card {
+    padding: 18px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .form-actions button {
+    width: 100%;
+  }
+
+
+  /* ==================================================
+   Game Backlog
+   ================================================== */
+
+.game-explorer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Search */
+
+.game-search {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 16px 18px;
+}
+
+.game-search label {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--ink);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.game-search input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 0.95rem;
+}
+
+.game-search input:focus {
+  outline: none;
+  border-color: var(--gold);
+  background: #ffffff;
+}
+
+/* Form */
+
+.game-form {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 22px;
+}
+
+.game-form-header {
+  margin-bottom: 20px;
+}
+
+.game-form-header h2 {
+  margin: 0 0 5px;
+  font-size: 1.25rem;
+}
+
+.game-form-header p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.game-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.game-form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.game-form-group label {
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.game-form-group input,
+.game-form-group select {
+  width: 100%;
+  min-height: 40px;
+  padding: 8px 11px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 0.95rem;
+}
+
+.game-form-group input:focus,
+.game-form-group select:focus {
+  outline: none;
+  border-color: var(--gold);
+  background: #ffffff;
+}
+
+.game-form-group input[aria-invalid="true"],
+.game-form-group select[aria-invalid="true"] {
+  border-color: var(--status-closed);
+}
+
+.game-form-error {
+  margin: 5px 0 0;
+  color: var(--status-closed);
+  font-size: 0.82rem;
+}
+
+.game-form-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.game-form-actions button {
+  min-height: 40px;
+  padding: 8px 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.game-save-button {
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: #ffffff;
+}
+
+.game-save-button:hover {
+  background: #2c3b4d;
+}
+
+.game-cancel-button {
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.game-cancel-button:hover {
+  border-color: var(--gold);
+}
+
+/* Game Cards */
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.game-card {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 20px 22px;
+}
+
+.game-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.game-platform {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.game-hours {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.game-card h2 {
+  margin: 0 0 10px;
+  font-size: 1.15rem;
+}
+
+.game-card h2 a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.game-card h2 a:hover {
+  color: var(--gold);
+}
+
+.game-card p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.game-card-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.game-card-actions button {
+  padding: 7px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.game-edit-button {
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.game-edit-button:hover {
+  border-color: var(--gold);
+}
+
+.game-delete-button {
+  border: 1px solid #e5c7c3;
+  background: var(--status-closed-bg);
+  color: var(--status-closed);
+}
+
+.game-delete-button:hover {
+  border-color: var(--status-closed);
+}
+
+.game-empty {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.game-empty p {
+  margin: 0;
+}
+
+/* Mobile */
+
+@media (max-width: 700px) {
+  .game-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .game-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-form {
+    padding: 18px;
+  }
+
+  .game-card {
+    padding: 18px;
+  }
+
+  .game-form-actions {
+    flex-direction: column;
+  }
+
+  .game-form-actions button {
+    width: 100%;
+  }
+}
 }

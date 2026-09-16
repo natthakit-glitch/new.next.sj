@@ -10,7 +10,8 @@ export default function CoursesPage() {
   return (
     <main className="page">
       <h1>รายวิชาทั้งหมด</h1>
-      <CourseExplorer courses={courses} />
+
+      <CourseExplorer initialCourses={courses} />
     </main>
   );
 }

@@ -16,6 +16,9 @@ export default function Navbar() {
         <li> 
             <Link href="/bands">วงดนตรี</Link> 
         </li> 
+        <li> 
+            <Link href="/games">Game Backlog</Link>
+        </li> 
         </ul> 
     </nav>
   ); 
