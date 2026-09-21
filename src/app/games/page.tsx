@@ -12,7 +12,7 @@ export default function GamesPage() {
       <h1>Game Backlog</h1>
 
       <p>
-        รายการเกมที่ตั้งใจจะเล่น พร้อมสถานะและเวลาที่คาดว่าจะใช้
+        รายการเกมที่ตั้งใจจะเล่น 
       </p>
 
       <GameExplorer initialGames={games} />

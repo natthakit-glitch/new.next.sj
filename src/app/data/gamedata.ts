@@ -3,28 +3,28 @@ import type { Game } from "@/types/game";
 export const games: Game[] = [
   {
     id: "1",
-    name: "The Legend of Zelda: Tears of the Kingdom",
+    name: "Fortnite",
     platform: "Nintendo Switch",
     hours: 60,
     status: "ยังไม่เริ่ม",
   },
   {
     id: "2",
-    name: "Elden Ring",
+    name: "ragnarok origin classic",
     platform: "PC",
     hours: 80,
     status: "กำลังเล่น",
   },
   {
     id: "3",
-    name: "God of War Ragnarök",
+    name: "God of War ",
     platform: "PlayStation 5",
     hours: 30,
     status: "เล่นจบแล้ว",
   },
   {
     id: "4",
-    name: "Cyberpunk 2077",
+    name: "Valorant",
     platform: "PC",
     hours: 50,
     status: "ยังไม่เริ่ม",
