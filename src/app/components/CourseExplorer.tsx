@@ -1,149 +1,120 @@
 "use client";
 
 import { useState, type ChangeEvent } from "react";
-import type { Game } from "@/types/game";
-import GameCard from "@/components/GameCard";
-import GameForm, { type GameDraft } from "@/components/GameForm";
+import type { Course } from "@/types/course";
+import CourseCard from "@/components/CourseCard";
+import CourseForm, {
+  type CourseDraft,
+} from "@/components/CourseForm";
 
-type GameExplorerProps = {
-  initialGames: Game[];
+type CourseExplorerProps = {
+  initialCourses: Course[];
 };
 
-export default function GameExplorer({
-  initialGames,
-}: GameExplorerProps) {
+export default function CourseExplorer({
+  initialCourses,
+}: CourseExplorerProps) {
+  const [courses, setCourses] =
+    useState<Course[]>(initialCourses);
 
-  // เก็บรายการเกมทั้งหมดไว้ใน State
-  const [games, setGames] = useState<Game[]>(initialGames);
-
-  // เก็บคำที่ใช้ค้นหาเกม
   const [keyword, setKeyword] = useState("");
 
-  // เก็บ ID ของเกมที่กำลังแก้ไข ถ้าไม่มีคือกำลังเพิ่มเกม
-  const [editingId, setEditingId] = useState<string | null>(null);
+  const [editingId, setEditingId] =
+    useState<string | null>(null);
 
-  function handleKeywordChange(
-    event: ChangeEvent<HTMLInputElement>,
-  ) {
-    // เปลี่ยนคำค้นหาตามที่ผู้ใช้พิมพ์
-    setKeyword(event.target.value);
-  }
-
-  function handleCreate(draft: GameDraft) {
-    // สร้างข้อมูลเกมใหม่ก่อนเพิ่มเข้าในรายการ
-    const newGame: Game = {
+  function handleCreate(draft: CourseDraft) {
+    const newCourse: Course = {
       id: crypto.randomUUID(),
+      code: draft.code.trim(),
       name: draft.name.trim(),
-      platform: draft.platform,
-      hours: Number(draft.hours),
-      status: draft.status as Game["status"],
+      credit: Number(draft.credit),
+      instructor: draft.instructor.trim(),
     };
 
-    // เพิ่มเกมใหม่ต่อจากรายการเดิม
-    setGames((prev) => [...prev, newGame]);
+    setCourses([...courses, newCourse]);
   }
 
   function handleDelete(id: string) {
-    // กรองเกมที่ต้องการลบออกจากรายการ
-    setGames((prev) =>
-      prev.filter((game) => game.id !== id),
+    setCourses(
+      courses.filter((course) => course.id !== id)
     );
-
-    // ถ้าลบเกมที่กำลังแก้ไขอยู่ ให้ยกเลิกการแก้ไข
-    if (editingId === id) {
-      setEditingId(null);
-    }
   }
 
-  function handleUpdate(id: string, draft: GameDraft) {
-    // ใช้ map เพื่อแก้เฉพาะเกมที่มี ID ตรงกัน
-    setGames((prev) =>
-      prev.map((game) =>
-        game.id === id
+  function handleUpdate(
+    id: string,
+    draft: CourseDraft
+  ) {
+    setCourses(
+      courses.map((course) =>
+        course.id === id
           ? {
-              ...game,
+              ...course,
+              code: draft.code.trim(),
               name: draft.name.trim(),
-              platform: draft.platform,
-              hours: Number(draft.hours),
-              status: draft.status as Game["status"],
+              credit: Number(draft.credit),
+              instructor: draft.instructor.trim(),
             }
-          : game,
-      ),
+          : course
+      )
     );
 
-    // แก้ไขเสร็จแล้วออกจากโหมดแก้ไข
     setEditingId(null);
   }
 
-  function handleSave(draft: GameDraft) {
-    // ถ้าไม่มี ID แสดงว่าเป็นการเพิ่มเกมใหม่
+  function handleSave(draft: CourseDraft) {
     if (editingId === null) {
       handleCreate(draft);
-    } else {
-      // ถ้ามี ID แสดงว่าเป็นการแก้ไขเกมเดิม
-      handleUpdate(editingId, draft);
+      return;
     }
+
+    handleUpdate(editingId, draft);
   }
 
-  // หาเกมที่กำลังแก้ไขเพื่อนำข้อมูลเดิมไปใส่ในฟอร์ม
-  const editingGame = games.find(
-    (game) => game.id === editingId,
+  const editingCourse = courses.find(
+    (course) => course.id === editingId
   );
 
-  // ทำให้คำค้นหาเป็นตัวพิมพ์เล็กเพื่อให้ค้นหาได้ง่ายขึ้น
   const searchText = keyword.trim().toLowerCase();
 
-  // กรองเกมตามชื่อเกม แพลตฟอร์ม หรือสถานะ
-  const visibleGames = games.filter(
-    (game) =>
-      game.name.toLowerCase().includes(searchText) ||
-      game.platform.toLowerCase().includes(searchText) ||
-      game.status.toLowerCase().includes(searchText),
+  const visibleCourses = courses.filter(
+    (course) =>
+      course.name.toLowerCase().includes(searchText) ||
+      course.code.toLowerCase().includes(searchText)
   );
 
+  function handleKeywordChange(
+    event: ChangeEvent<HTMLInputElement>
+  ) {
+    setKeyword(event.target.value);
+  }
+
   return (
-    <div className="game-explorer">
-      <div className="game-search">
-        <label htmlFor="game-search-input">
-          ค้นหาเกม
-        </label>
+    <div>
+      <input
+        id="keyword"
+        placeholder="ค้นหารายวิชา"
+        value={keyword}
+        onChange={handleKeywordChange}
+      />
 
-        <input
-          id="game-search-input"
-          type="search"
-          value={keyword}
-          onChange={handleKeywordChange}
-          placeholder="ค้นหาชื่อเกม แพลตฟอร์ม หรือสถานะ"
-        />
-      </div>
-
-      {/* ส่งข้อมูลเกมที่กำลังแก้ไขไปให้ฟอร์ม */}
-      <GameForm
+      <CourseForm
         key={editingId ?? "new"}
-        initialGame={editingGame}
+        initialCourse={editingCourse}
         onSave={handleSave}
         onCancel={() => setEditingId(null)}
       />
 
-      {visibleGames.length === 0 ? (
-        <div className="game-empty">
-          <p>ไม่พบเกมที่ตรงกับเงื่อนไข</p>
-        </div>
+      {visibleCourses.length === 0 ? (
+        <p>ไม่พบรายวิชาที่ตรงกับคำค้น</p>
       ) : (
-        <section className="game-grid">
-          {visibleGames.map((game) => (
-            <GameCard
-              key={game.id}
-              game={game}
-
-              // กดแก้ไขแล้วเก็บ ID ของเกมไว้
-              onEdit={() => setEditingId(game.id)}
-
-              // ส่ง ID ไปให้ฟังก์ชันลบเกม
-              onDelete={() => handleDelete(game.id)}
-            />
-          ))}
-        </section>
+        visibleCourses.map((course) => (
+          <CourseCard
+            key={course.id}
+            course={course}
+            onEdit={() => setEditingId(course.id)}
+            onDelete={() => handleDelete(course.id)}
+          />
+        ))
       )}
     </div>
   );
